@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('address');
-            $table->boolean('is_admin')->default(false);
-            $table->timestamps();
+            //need to change to string (since we have 3 roles - customer,admin,staff),only admin can manipulate this role.
+            $table->enum('role', ['customer', 'admin', 'staff']);
         });
     }
 

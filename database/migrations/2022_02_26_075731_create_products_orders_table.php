@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('products_orders', function (Blueprint $table) {
             $table->string('product_id');
             $table->string('order_id');
+            //this table only can update the quantity --> but it effect the total price
             $table->tinyInteger('quantity');
-            $table->timestamps();
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
