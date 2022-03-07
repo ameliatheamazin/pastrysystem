@@ -20,7 +20,8 @@
 <body class="antialiased">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#e5aa70">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Cest Bon Pastry</a>
+            {{-- This section were to merge --> link for each href and the title display . use session to toogle? --}}
+            <a class="navbar-brand" href="/admin">Cest Bon Pastry</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
                 aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -29,23 +30,20 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home
+                        <a class="nav-link" href="#">Product
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/cart"><i class="fa fa-shopping-cart"></i> Cart<span
-                                class="badge">{{Session()->has('cart') ? Session::get('cart')->totalQty :
-                                ''}}</span></a>
+                        <a class="nav-link" href="/admin/order">Order</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Order History</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link" href="#">User</a>
                     </li>
                 </ul>
             </div>
+            {{-- This section were to merge --> link for each href and the title display --}}
         </div>
+
     </nav>
     <main class="container">
         @yield('content')

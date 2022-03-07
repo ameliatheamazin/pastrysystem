@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use App\Model\User;
-use App\Model\Products_Order;
+use App\Models\User;
 
 class Order extends Model
 {
     use HasFactory, Notifiable;
-    //public $timestampe=false;
+    public $timestamps = false;
 
     //composite key for order and product
     protected $fillable = [
@@ -28,8 +27,8 @@ class Order extends Model
     }
 
     //1 order has many items
-    public function orderItems()
+    public function orderlist()
     {
-        return $this->hasMany(Products_Order::class);
+        return $this->belongsToMany(Product::class, 'products_orders')->withPivot('quantity');
     }
 }

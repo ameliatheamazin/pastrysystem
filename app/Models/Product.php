@@ -27,6 +27,6 @@ class Product extends Model
     //1 product can exist in many order item
     public function orderlist()
     {
-        return $this->hasMany(Products_Order::class);
+        return $this->belongsToMany(Order::class, 'products_orders')->withPivot('quantity');
     }
 }
