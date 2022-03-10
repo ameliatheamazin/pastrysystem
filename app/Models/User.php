@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model; //import the model 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -34,7 +35,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function order(){
+    public function order()
+    {
         return $this->hasMany(Order::class);
     }
 

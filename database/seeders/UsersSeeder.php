@@ -21,14 +21,25 @@ class UsersSeeder extends Seeder
             'email' => 'ame@gmail.com',
             'password' => 1234,
             'address' => '88, Jalan Maju, Taman Sentosa, 55000 Kuala Lumpur',
-         ]);
+            'role' => 'customer',
+        ]);
 
-         DB::table('users')->insert([
+        DB::table('users')->insert([
             'id' => '2',
             'name' => 'John',
             'email' => 'john@gmail.com',
             'password' => 1234,
             'address' => '',
-         ]);
+            'role' => 'admin',
+        ]);
+
+        DB::table('users')->insert([
+            'id' => '3',
+            'name' => 'Shelton',
+            'email' => 'shelton@gmail.com',
+            'password' => 1234,
+            'address' => '',
+            'role' => 'staff',
+        ]);
     }
 }

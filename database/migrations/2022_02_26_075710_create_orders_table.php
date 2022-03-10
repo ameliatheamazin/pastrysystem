@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('user_id');
             $table->float('total_price');
-            $table->timestamps();
+            //Each table needs CRUD , so assume this table only can update delivery address (default is user address)
+            $table->string('delivery_address');
+            $table->enum('status', ['ordered', 'delivered', 'cancelled'])->default('ordered');
+            $table->timestamp('order_date')->useCurrent = true;
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

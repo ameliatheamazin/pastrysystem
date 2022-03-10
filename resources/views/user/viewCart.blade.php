@@ -37,7 +37,7 @@
 </div>
 
 <style>
-.w-5 {
-    display: none
-}
+    .w-5 {
+        display: none
+    }
 </style>
