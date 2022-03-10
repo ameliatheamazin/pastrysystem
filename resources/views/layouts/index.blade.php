@@ -18,7 +18,7 @@
 </head>
 
 <body class="antialiased">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#e5aa70">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Cest Bon Pastry</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
