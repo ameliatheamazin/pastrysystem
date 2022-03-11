@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController; //declare the route
 use App\Http\Controllers\UserController; //declare the route
 use App\Http\Controllers\OrderController; //declare the Route
+use App\Http\Controllers\AdminProductController; //declare the Route
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Order;
@@ -28,7 +29,8 @@ Route::get('/addToCart/{id}', [ProductController::class, 'addToCart']);
 Route::get('/checkout', [ProductController::class, 'orderPaid']);
 //for the cart page
 Route::get("/cart", [ProductController::class, 'showCart']);
-
+//to the profile pages
+Route::get("/profile", [UserController::class, 'showUser']);
 
 
 //Admin dashboard
@@ -42,3 +44,17 @@ Route::get('/admin/order/{id}', [OrderController::class, 'show']);
 Route::get('/admin/order/{id}/edit', [OrderController::class, 'showEdit']);
 //edit order details
 Route::post('/admin/order/{id}/edit', [OrderController::class, 'update']);
+//list all orders
+Route::get('/admin/product', [AdminProductController::class, 'index']);
+//to show 1 product
+Route::get('/admin/product/{id}', [AdminProductController::class, 'show']);
+//edit product details
+Route::get('/admin/product/{id}/edit', [AdminProductController::class, 'showEdit']);
+//edit product details
+Route::post('/admin/product/{id}/edit', [AdminProductController::class, 'update']);
+//add product details
+Route::get("/admin/add", [AdminProductController::class, 'showAdd']);
+//add product details
+Route::post('/admin/add', [AdminProductController::class, 'add']);
+//to delete 1 product
+Route::get('/admin/product/{id}/delete', [AdminProductController::class, 'destroy']);
