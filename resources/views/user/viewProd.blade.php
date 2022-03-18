@@ -8,7 +8,7 @@
                 <h3 class="card-header" style="font-size:15px; height:40px; text-align:center; color:black ">
                     {{$prod['name']}}</h3>
                 <div class="card-body" style="height:210px">
-                    <img src="{{$prod['image_file']}}" class="img-fluid" alt="Product Image"
+                    <img src="/storage/products/{{$prod['image_file']}}" class="img-fluid" alt="Product Image"
                         style="height:100%; width:100%">
                 </div>
                 <div class="card-body" style="height: 120px">
