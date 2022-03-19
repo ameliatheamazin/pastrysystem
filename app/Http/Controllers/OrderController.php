@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Session;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB; //to import the database 
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\User;
+use App\Models\Products_Order;
 
 class OrderController extends Controller
 {
@@ -59,5 +60,25 @@ class OrderController extends Controller
         $order->save();
 
         return redirect("/admin/order")->with('message', 'Order ' . $id . ' has been updated succesfully');
+    }
+
+    public function addOrder(Request $req){
+        if ($req->session()->has('cart'))
+        {
+            $cart=Session::get('cart');
+            $order=new Order;
+            $order->user_id=1; //dummy
+            $order->total_price=$cart->totalPrice;
+            $order->status="Ordered";
+            $order->delivery_address="88, Jalan Maju, Taman Sentosa, 55000 Kuala Lumpur"; //dummy
+            $order->save();
+
+            foreach($cart->items as $product){
+                $order->orderlist()->attach($product['item']['id'],['quantity'=>$product['qty']]);
+            }
+            
+            return redirect("/orderPaid");
+
+        }
     }
 }

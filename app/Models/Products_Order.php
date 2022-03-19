@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
-use App\Model\Order;
-use App\Model\Product;
 
 class Products_Order extends Model
 {
-    protected $fillable = [];
+    use HasFactory;
+    protected $table = 'Products_Orders';
+    protected $primaryKey = 'product_id';
 }
