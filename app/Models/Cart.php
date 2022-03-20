@@ -37,4 +37,23 @@ class Cart
         // var_dump($this->items);
     }
 
+    //to add the quantity for each product
+    public function addQty($id){
+        $this->items[$id]['qty']++;
+        $this->totalPrice+=$this->items[$id]['price'];
+        $this->totalQty++;
+    }
+
+    //to deduct the quantity for each product
+    public function deductQty($id){
+        $this->items[$id]['qty']--;
+        $this->totalPrice-=$this->items[$id]['price'];
+        $this->totalQty--;
+		if ($this->items[$id]['qty'] <= 0)
+		{
+			unset($this->items[$id]);
+		}
+    }
+    
+
 }

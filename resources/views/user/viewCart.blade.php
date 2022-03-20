@@ -19,8 +19,11 @@
             <tr>
                 <th scope="row">{{$i+=1}}</th>
                 <td>{{$product['item']['name']}}</td>
-                <td>{{$product['qty']}}</td>
-                <td>RM {{$product['price']}}</td>
+                <td><a class="btn btn-secondary" href={{"add/".$product['id']}}>+</a>
+                    &nbsp;&nbsp;{{$product['qty']}}&nbsp;&nbsp;
+                    <a class="btn btn-secondary" href={{"deduct/".$product['id']}}>-</a>
+                </td>
+                <td>RM {{$product['price']*$product['qty']}}</td>
             </tr>
 
             @endforeach
@@ -33,11 +36,13 @@
     </table>
     <a href="/checkout">
         <button type=" button" class="btn btn-success btn-lg" style=" position:absolute; right:270px;">Check
-            Out</button></a>
+            Out</button>
+
 </div>
 
+
 <style>
-    .w-5 {
-        display: none
-    }
+.w-5 {
+    display: none
+}
 </style>

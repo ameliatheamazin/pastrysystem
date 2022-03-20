@@ -51,6 +51,31 @@ class ProductController extends Controller
         return view('user/cart',['products'=>$cart->items,'totalPrice'=>$cart->totalPrice]);
     }
 
+    public function addQty(Request $request, $id){
+        $oldCart=$request->session()->has('cart') ? $request->session()->get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->addQty($id);
+
+        $request->session()->put('cart', $cart);
+        return redirect('/cart');
+    }
+    
+    public function deductQty(Request $request, $id){
+        $oldCart = $request->session()->has('cart') ? $request->session()->get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->deductQty($id);
+
+        if (count($cart->items) > 0) {
+            $request->session()->put('cart', $cart);
+        } 
+        else{
+            $request->session()->forget('cart');
+        }
+        return redirect('/cart');
+
+    }
+
+
     public function orderPaid(Request $req){
         if ($req->session()->has('cart'))
         {

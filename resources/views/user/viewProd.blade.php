@@ -17,8 +17,8 @@
                 <div class="card-body">
                     <p style="font-size:18px">RM {{$prod['price']}}.00</p>
                 </div>
-                <div class="card-footer">
-                    <a href={{"addToCart/".$prod['id']}} class="card-link">Add to Cart</a>
+                <div class="card-footer row">
+                    <a href={{"addToCart/".$prod['id']}} class="btn btn-primary col-xs-4">Add to Cart</a>
 
                 </div>
             </div>

@@ -5,11 +5,12 @@ use App\Http\Controllers\ProductController; //declare the route
 use App\Http\Controllers\UserController; //declare the route
 use App\Http\Controllers\OrderController; //declare the Route
 use App\Http\Controllers\AdminProductController; //declare the Route
+use App\Http\Controllers\Products_OrderController; //declare the Route
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\User;
-
+use App\Models\Products_Order;
 Route::resource('Cart', 'CartController');
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,13 @@ Route::resource('Cart', 'CartController');
 Route::get("/", [ProductController::class, 'showProd']);
 //to route the item to add to cart
 Route::get('/addToCart/{id}', [ProductController::class, 'addToCart']);
+Route::get('/add/{id}',[ProductController::class,'addQty']);
+Route::get('/deduct/{id}',[ProductController::class,'deductQty']);
 //to route the item to checkout
-Route::get('/checkout', [ProductController::class, 'orderPaid']);
+Route::get('/checkout', [OrderController::class, 'addOrder']);
+Route::get('/orderPaid', [ProductController::class, 'orderPaid']);
+// //to put save the products associated with the order
+// Route::get('/addOrderProd',[Products_OrderController::class,'addOrderProd']);
 //for the cart page
 Route::get("/cart", [ProductController::class, 'showCart']);
 //to the profile pages
