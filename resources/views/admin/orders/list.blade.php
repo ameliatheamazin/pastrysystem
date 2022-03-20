@@ -69,6 +69,14 @@
                         {{ number_format($order->total_price, 2) }}
                     </div>
                 </td>
+
+                <td>
+                    <div>
+                        <a href={{"/admin/order/".$order->id."/edit"}} class="btn btn-warning">
+                            Edit
+                        </a>
+                    </div>
+                </td>
             </tr>
             @endforeach
 

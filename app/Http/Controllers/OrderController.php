@@ -12,8 +12,8 @@ use App\Models\Products_Order;
 
 class OrderController extends Controller
 {
-    //to show all orders (only admin and staff can use, where user only show their own order)
-    public function index(Request $request)
+    //to show all orders (for admin & staff display)
+    public function showAll(Request $request)
     {
         $orders = Order::with('orderlist')
             ->when($request->query('id'), function ($query) use ($request) {
@@ -27,7 +27,12 @@ class OrderController extends Controller
         return view('admin.orders.list', ['orders' => $orders, 'request' => $request]);
     }
 
-    //to show 1 order item (admin,staff,user can use)
+    public function index(Request $request)
+    {
+        //..... use for customer to show only their orders. Can match the policy implementation method - viewAny
+    }
+
+    //to show 1 order item (admin,staff,user can use) - try to implement policy on view.
     public function show($id)
     {
         $order = Order::find($id);

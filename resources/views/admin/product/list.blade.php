@@ -62,15 +62,22 @@
                     </div>
                 </td>
 
-                <td class="table-text">
+                <td class="table-text" style="width:600px">
                     <div>
                         {{ $product->description }}
                     </div>
                 </td>
+
                 <td>
                     <div>
-                        <a class="btn btn-danger" style="margin:5px" href={{"/admin/product/".$product->id."/delete"}}
-                            >Delete</a>
+                        <a class="btn btn-warning" style="margin-left:15px;display:inline-block"
+                            href={{"/admin/product/".$product->id."/edit"}}>
+                            Edit
+                        </a>
+                        <a class="btn btn-danger" style="margin-left:15px;display:inline-block;"
+                            href={{"/admin/product/".$product->id."/delete"}}
+                            >Delete
+                        </a>
                     </div>
                 </td>
 

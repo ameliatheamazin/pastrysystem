@@ -11,9 +11,6 @@
         <a href="/admin/product" style="text-decoration:none; text-shadow:2px 2px 3px; font-size:17px">
             &larr; Back
         </a>
-        <a href={{"/admin/product/".$product->id."/edit"}} class="showproduct">
-            Edit
-        </a>
     </p>
     <div class="panel-body">
         <div style="background:hsla(26, 83%, 93%, 0.562); padding:20px; margin:10px;">
@@ -30,7 +27,8 @@
                         <tr>
                             <th>Product Image</th>
                             <td class="productrow">
-                                <img src="/storage/products/{{$product['image_file']}}" class="img-fluid" alt="Product Image" style="height:30%; width:30%">
+                                <img src="/storage/products/{{$product['image_file']}}" class="img-fluid"
+                                    alt="Product Image" style="height:30%; width:30%">
                             </td>
                         </tr>
                         <tr>
@@ -53,7 +51,7 @@
                             <td class="productrow">{{ $product->description }}</td>
                         </tr>
 
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -62,20 +60,6 @@
 </div>
 
 <style>
-    .showproduct {
-        text-decoration: none;
-        text-shadow: 2px 2px 3px;
-        font-size: 17px;
-        margin-left: 1130px;
-        box-shadow: inset 0 0 0 0 var(--link-1);
-        transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
-
-    .showproduct:hover {
-        color: rgb(13, 82, 82);
-        box-shadow: inset 100px 0 0 0 var(--link-1);
-    }
-
     .productrow {
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }

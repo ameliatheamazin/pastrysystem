@@ -11,6 +11,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\Products_Order;
+
 Route::resource('Cart', 'CartController');
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,8 @@ Route::resource('Cart', 'CartController');
 Route::get("/", [ProductController::class, 'showProd']);
 //to route the item to add to cart
 Route::get('/addToCart/{id}', [ProductController::class, 'addToCart']);
-Route::get('/add/{id}',[ProductController::class,'addQty']);
-Route::get('/deduct/{id}',[ProductController::class,'deductQty']);
+Route::get('/add/{id}', [ProductController::class, 'addQty']);
+Route::get('/deduct/{id}', [ProductController::class, 'deductQty']);
 //to route the item to checkout
 Route::get('/checkout', [OrderController::class, 'addOrder']);
 Route::get('/orderPaid', [ProductController::class, 'orderPaid']);
@@ -43,13 +44,14 @@ Route::get("/profile", [UserController::class, 'showUser']);
 Route::view("/admin", "admin.home");
 
 //list all orders
-Route::get('/admin/order', [OrderController::class, 'index']);
+Route::get('/admin/order', [OrderController::class, 'showAll']);
 //to show 1 order
 Route::get('/admin/order/{id}', [OrderController::class, 'show']);
 //edit order details
 Route::get('/admin/order/{id}/edit', [OrderController::class, 'showEdit']);
 //edit order details
 Route::post('/admin/order/{id}/edit', [OrderController::class, 'update']);
+
 //list all orders
 Route::get('/admin/product', [AdminProductController::class, 'index']);
 //to show 1 product

@@ -11,9 +11,6 @@
         <a href="/admin/order" style="text-decoration:none; text-shadow:2px 2px 3px; font-size:17px">
             &larr; Back
         </a>
-        <a href={{"/admin/order/".$order->id."/edit"}} class="editOrder">
-            Edit
-        </a>
     </p>
     <div class="panel-body">
         <div style="background:hsla(26, 83%, 93%, 0.562); padding:20px; margin:10px;">
@@ -82,20 +79,6 @@
 </div>
 
 <style>
-    .editOrder {
-        text-decoration: none;
-        text-shadow: 2px 2px 3px;
-        font-size: 17px;
-        margin-left: 1130px;
-        box-shadow: inset 0 0 0 0 var(--link-1);
-        transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
-
-    .editOrder:hover {
-        color: rgb(13, 82, 82);
-        box-shadow: inset 100px 0 0 0 var(--link-1);
-    }
-
     .orderRow {
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
