@@ -18,7 +18,7 @@
     <br>
 
     <table class="table table-hover">
-        <thread>
+        <thead>
             <tr>
                 <th scope="col">No </th>
                 <th scope="col">Order_ID</th>
@@ -27,7 +27,7 @@
                 <th scope="col">Delivery Status</th>
                 <th scope="col">Total Cost (RM)</th>
             </tr>
-        </thread>
+        </thead>
 
         <tbody>
 

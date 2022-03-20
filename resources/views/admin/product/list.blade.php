@@ -18,12 +18,12 @@
     <br>
 
     <div>
-        <a href={{"/admin/add"}} class="btn btn-success" style="margin:0px 10px 10px">
+        <a href={{"/admin/add/product"}} class="btn btn-success" style="margin:0px 10px 10px">
             Add Product
         </a>
     </div>
     <table class="table table-hover">
-        <thread>
+        <thead>
             <tr>
                 <th scope="col">No </th>
                 <th scope="col">Product ID</th>
@@ -31,7 +31,7 @@
                 <th scope="col">Product Price</th>
                 <th scope="col">Product Description</th>
             </tr>
-        </thread>
+        </thead>
 
         <tbody>
 
@@ -69,7 +69,8 @@
                 </td>
                 <td>
                     <div>
-                        <a class="btn btn-danger" style="margin:5px" href={{"/admin/product/".$product->id."/delete"}} >Delete</a>
+                        <a class="btn btn-danger" style="margin:5px" href={{"/admin/product/".$product->id."/delete"}}
+                            >Delete</a>
                     </div>
                 </td>
 

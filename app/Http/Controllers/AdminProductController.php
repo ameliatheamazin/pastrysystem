@@ -41,28 +41,28 @@ class AdminProductController extends Controller
         $product = Product::find($id);
         if (!$product) throw new ModelNotFoundException;
 
-        return view('admin.product.edit', [ 'product' => $product]);
+        return view('admin.product.edit', ['product' => $product]);
     }
 
     //to edit order (admin)
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => ['required','regex:/([- ,\/0-9a-zA-Z]+)/'],
+            'name' => ['required', 'regex:/([- ,\/0-9a-zA-Z]+)/'],
             'description' => ['required', 'regex:/([- ,\/0-9a-zA-Z]+)/'],
             'price' => ['required', 'regex:/^(\d+(,\d{1,2})?)?$/', 'min:1'],
-             'image_file' => 'required | mimes:jpeg,jpg,png | max:2000',
+            'image_file' => 'required | mimes:jpeg,jpg,png | max:2000',
 
         ]);
         $product = Product::find($id);
-        if($request->hasFile('image_file')){
+        if ($request->hasFile('image_file')) {
             $filename = $product->name;
-            $filenameToStore = $filename.'.jpg';
+            $filenameToStore = $filename . '.jpg';
             $path = $request->file('image_file')->storeAs('public/products', $filenameToStore);
-        }else {
+        } else {
             $filenameToStore = 'noimage.jpg';
         }
-        
+
         $product->image_file = $filenameToStore;
         $product->description = $request->description;
         $product->name = $request->name;
@@ -77,7 +77,7 @@ class AdminProductController extends Controller
         // if (Gate::allows('isAdmin')) {
         //     $pizza = Pizza::find($id);
         //     $pizza->delete();
-    
+
         //     return redirect()->route('admin.pizza.index')
         //                     ->with('success','Pizza deleted successfully');
         // } else {
@@ -86,8 +86,8 @@ class AdminProductController extends Controller
 
         $product = Product::find($id);
         $product->delete();
-    
-        return redirect("/admin/product")->with('message','Product deleted successfully');
+
+        return redirect("/admin/product")->with('message', 'Product deleted successfully');
     }
 
     //to add product (admin can edit only)
@@ -101,21 +101,21 @@ class AdminProductController extends Controller
     public function add(Request $request)
     {
         $request->validate([
-            'name' => ['required','regex:/([- ,\/0-9a-zA-Z]+)/'],
+            'name' => ['required', 'regex:/([- ,\/0-9a-zA-Z]+)/'],
             'description' => ['required', 'regex:/([- ,\/0-9a-zA-Z]+)/'],
             'price' => ['required', 'regex:/^(\d+(,\d{1,2})?)?$/', 'min:1'],
             'image_file' => 'required | mimes:jpeg,jpg,png | max:2000',
 
         ]);
         $product = new Product;
-        if($request->hasFile('image_file')){
+        if ($request->hasFile('image_file')) {
             $filename = $product->name;
-            $filenameToStore = $filename.'.jpg';
+            $filenameToStore = $filename . '.jpg';
             $path = $request->file('image_file')->storeAs('public/products', $filenameToStore);
-        }else {
+        } else {
             $filenameToStore = 'noimage.jpg';
         }
-        
+
         $product->image_file = $filenameToStore;
         $product->description = $request->description;
         $product->name = $request->name;
@@ -124,5 +124,4 @@ class AdminProductController extends Controller
 
         return redirect("/admin/product")->with('message', 'Product has been added succesfully');
     }
-
 }

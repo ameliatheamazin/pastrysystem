@@ -52,8 +52,9 @@ Route::get('/admin/product/{id}', [AdminProductController::class, 'show']);
 Route::get('/admin/product/{id}/edit', [AdminProductController::class, 'showEdit']);
 //edit product details
 Route::post('/admin/product/{id}/edit', [AdminProductController::class, 'update']);
+
 //add product details
-Route::get("/admin/add", [AdminProductController::class, 'showAdd']);
+Route::get("/admin/add/product", [AdminProductController::class, 'showAdd']);
 //add product details
 Route::post('/admin/add', [AdminProductController::class, 'add']);
 //to delete 1 product
